@@ -1,6 +1,7 @@
 
 const apiKey = '3e94728e52274d23bfdd7eff3367d170';
-const url = 'http://localhost:3000/api/competitions/2021/teams';
+//const url = 'http://localhost:3000/api/competitions/2021/teams';
+const url = '/api/teams';
 //const proxyUrl = 'http://localhost:3000/';
 
 async function fetchTeams() {

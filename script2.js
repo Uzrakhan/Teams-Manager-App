@@ -6,7 +6,8 @@ const url = '/api/teams';
 
 async function fetchTeams() {
     try{
-        const response = await fetch(`${url}`, {
+        console.log('Fetching from URL:', url); // Debug log
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'X-Auth-Token': apiKey

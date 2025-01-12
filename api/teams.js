@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const apiKey = '3e94728e52274d23bfdd7eff3367d170';
-  const url = 'https://api.football-data.org/v2/competitions/2021/teams';
+  const url = 'https://api.football-data.org/v4/competitions/2021/teams';
 
   try {
       console.log('Fetching data from Football Data API...');

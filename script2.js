@@ -1,11 +1,11 @@
 
 const apiKey = '3e94728e52274d23bfdd7eff3367d170';
-const url = 'https://api.football-data.org/v4/competitions/2021/teams';
-const proxyUrl = 'http://localhost:3000/';
+const url = 'http://localhost:3000/api/competitions/2021/teams';
+//const proxyUrl = 'http://localhost:3000/';
 
 async function fetchTeams() {
     try{
-        const response = await fetch(`${proxyUrl}${url}`, {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'X-Auth-Token': apiKey

@@ -1,1 +1,1 @@
-web: node cors-proxy/server.js
+web: node cors-proxy/teams.js

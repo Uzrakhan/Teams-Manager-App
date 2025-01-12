@@ -1,5 +1,12 @@
-const url = '/api/teams'; // Use your backend API endpoint
+//const url = '/api/teams'; // Use your backend API endpoint
 const apiKey = '3e94728e52274d23bfdd7eff3367d170';
+const url = 'http://localhost:3001/https://api.football-data.org/v4/teams';
+
+
+
+// Check if the app is running in a production environment (on Vercel)
+
+// Set the correct URL depending on the environment
 
 async function fetchTeams() {
     try {

@@ -10,6 +10,16 @@
     <div class="container">
         <h1>Teams Manager App</h1>
         <button id="fetch-data">Fetch data</button>
+        <div class="filters">
+            <label for="filter-name">Filter by Name:</label>
+            <input type="text" placeholder="Enter team name." id="filter-name">
+
+            <label for="sort-select">Sort By:</label>
+            <select id="sort-select">
+                <option value="name">Name</option>
+                <option value="established">Establishment Year</option>
+            </select>
+        </div>
         <div id="teams-list"></div>
     </div>
     <script src="script2.js"></script>

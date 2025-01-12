@@ -1,25 +1,22 @@
-
+const url = '/api/teams'; // Use your backend API endpoint
 const apiKey = '3e94728e52274d23bfdd7eff3367d170';
-//const url = 'http://localhost:3000/api/competitions/2021/teams';
-const url = '/api/teams';
-//const proxyUrl = 'http://localhost:3000/';
 
 async function fetchTeams() {
-    try{
-        console.log('Fetching from URL:', url); // Debug log
+    try {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'X-Auth-Token': apiKey
-            }
+                'X-Auth-Token': apiKey, // Optional; backend already handles it
+            },
         });
+
         const data = await response.json();
-        const teams = data.teams;
-        displayTeams(teams)
+        const teams = data.teams; // This should now reflect real data from Football Data API
+        displayTeams(teams);
         console.log(data);
         console.log(teams);
-    }catch(error) {
-        console.error('error:',error)
+    } catch (error) {
+        console.error('error:', error);
     }
 }
 
@@ -27,9 +24,9 @@ function displayTeams(teams) {
     const teamsList = document.getElementById('teams-list');
     teamsList.innerHTML = '';
 
-    teams.forEach(team => {
+    teams.forEach((team) => {
         const teamEl = document.createElement('div');
-        const competitions = team.runningCompetitions;
+        const competitions = team.runningCompetitions || []; // Ensure it's safe to iterate
         teamEl.innerHTML = `
          <div class="player-card">
             <h3>Team: ${team.name}</h3>
@@ -41,12 +38,15 @@ function displayTeams(teams) {
                     ${team.website}
                 </a>
             </p>
-            <p>Coach/Manager: ${team.coach.name}</p>
+            <p>Coach/Manager: ${team.coach?.name || 'N/A'}</p>
             <p>Leagues Played:
                 <ul>
-                    ${competitions && competitions.length > 0 ?
-                        competitions.map(comp => `<li>${comp.name}</li>`).join('') :
-                        '<li>No comp available.</li>'
+                    ${
+                        competitions.length > 0
+                            ? competitions
+                                  .map((comp) => `<li>${comp.name}</li>`)
+                                  .join('')
+                            : '<li>No competitions available.</li>'
                     }
                 </ul>
             </p>
@@ -56,4 +56,6 @@ function displayTeams(teams) {
     });
 }
 
-document.getElementById('fetch-data').addEventListener('click', fetchTeams);
+document
+    .getElementById('fetch-data')
+    .addEventListener('click', fetchTeams);
